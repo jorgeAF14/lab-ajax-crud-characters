@@ -1,11 +1,14 @@
+
+
 class APIHandler {
   constructor (baseUrl) {
     this.BASE_URL = baseUrl;
-    this.axiosApp = axios.create(baseUrl)
+    this.axiosApp = axios.create({ baseURL: this.BASE_URL})
   }
 
   getFullList () {
     return this.axiosApp.get('/characters')
+       
   }
 
   getOneRegister(characterId) {
@@ -22,6 +25,6 @@ class APIHandler {
   }
 
   deleteOneRegister(characterId) {
-    return this.axiosApp.post(`/characters/${characterId}`)
+    return this.axiosApp.delete(`/characters/${characterId}`)
   }
 }
